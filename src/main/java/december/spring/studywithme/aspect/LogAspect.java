@@ -1,6 +1,7 @@
 package december.spring.studywithme.aspect;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -15,7 +16,11 @@ import java.util.Objects;
 @Slf4j
 @Aspect
 @Component
+@RequiredArgsConstructor
 public class LogAspect {
+
+    private final HttpServletRequest request;
+
     // 포인트컷 시그니처
     @Pointcut("execution(* december.spring.studywithme.controller..*(..))")
     public void controller(){}
@@ -26,14 +31,7 @@ public class LogAspect {
     //controller
     @Before("controller()")
     public void controllerLogBefore(JoinPoint joinPoint) throws Throwable{
-        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        if (attributes != null) {
-            HttpServletRequest request = attributes.getRequest();
-            // URL과 HTTP 메서드를 로그에 출력
-            log.info("Request URL: {}, HTTP METHOD: {}", request.getRequestURL(), request.getMethod());
-        } else {
-            log.warn("HttpServletRequest를 사용할 수 없습니다.");
-        }
+        log.info("Request URL: {}, HTTP Method: {}", request.getRequestURL(), request.getMethod());
     }
 
 
