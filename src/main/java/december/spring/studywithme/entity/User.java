@@ -3,6 +3,7 @@ package december.spring.studywithme.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.persistence.Column;
@@ -24,6 +25,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Getter
+@Setter
 @Table(name = "user")
 public class User extends Timestamped {
     @Id
@@ -31,6 +33,7 @@ public class User extends Timestamped {
     private Long id;
     
     @Column(nullable = false, unique = true)
+    @NotNull
     private String userId;
     
     @Column(nullable = false)

@@ -44,6 +44,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    //Fixture-monkey
+    testImplementation 'com.navercorp.fixturemonkey:fixture-monkey-starter:1.0.14'
 }
 
 tasks.named('test') {
