@@ -16,6 +16,8 @@ public class UserResponseDtoTest {
         //given
         User user = MonkeyUtils.monkey().giveMeOne(User.class);
 
+        System.out.println(user.getPassword());
+
         //when
         UserResponseDTO responseDTO = new UserResponseDTO(user);
 
